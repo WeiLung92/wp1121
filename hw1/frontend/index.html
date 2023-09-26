@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>diary list</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="index.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"
+      integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <h1>My Diary <button id="diary-add" tabindex="3">新增日記本</button> </h1>
+    
+    <!-- <div id="diary-input-container"></div> -->
+
+    <div id = "date"></div>
+
+    <div id = "title-select"></div>
+
+    <div id = "mood-select"></div>
+
+    <div id="description-container">
+      <!-- <textarea
+      id="diary-description-input"
+      placeholder="description"
+      tabindex="2"
+      ></textarea> -->
+    </div>
+    
+    <div id="SaveOrNot"></div>
+
+    <section id="diarys"></section>
+  </body>
+  <template id="diary-item-template">
+    <details id="" class="diary-item" open>
+      <summary>
+          <!-- <input data-id="" type="checkbox" /> -->
+          <p class="diary-date">date</p>
+          <p class="diary-title">title</p>
+          <p class="diary-mood">mood</p>
+        </div>
+        <p class = "edit"> <button class="diary-edit" tabindex="3">編輯</button> </p>
+      </summary>
+      <!-- <p class = "edit"> <button class="diary-edit" tabindex="3">編輯</button> </p> -->
+      <p class="diary-description">diary 1 description </p>
+      <p class = "SaveOrNot"></p>
+
+      <div id="diary-input-container"></div>
+      <div id = "title-select"></div>
+      <div id = "mood-select"></div>
+      <div id="description-container"></div>
+
+    </details>
+  </template>
+</html>
+
