@@ -155,7 +155,7 @@ export default function SongList({ id, name, description, songs, deleting }: Son
           <CardMedia
             component="img"
             height="194"
-            image="https://images.chinatimes.com/newsphoto/2022-03-01/656/20220301002802.jpg"
+            image="https://attach.setn.com/newsimages/2017/04/11/871905-PH.jpg"
           />
         </ButtonBase>
         <Dialog
@@ -185,7 +185,7 @@ export default function SongList({ id, name, description, songs, deleting }: Son
               className="p-5"
               component="img"
               sx={{ width: 300 }}
-              image="https://images.chinatimes.com/newsphoto/2022-03-01/656/20220301002802.jpg"
+              image="https://attach.setn.com/newsimages/2017/04/11/871905-PH.jpg"
             />
             <Box sx={{ display: 'flex', flexDirection: 'column', width: 500}}>
               <div className="flex gap-4">
@@ -271,9 +271,11 @@ export default function SongList({ id, name, description, songs, deleting }: Son
               </DialogContentText>
               <DialogContentText id="alert-dialog-description">
                 {songs.map((song)=>(
-                  selectedSongs.includes(song.id) ? (
+                  <div key = {song.id}>
+                  {selectedSongs.includes(song.id) ? (
                     <Typography>{song.title}</Typography> 
-                  ):(<div/>)
+                  ):(<div/>)}
+                  </div>
                 ))}
               </DialogContentText>
             </DialogContent>
