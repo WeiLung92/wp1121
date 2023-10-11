@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 // import { Add as AddIcon } from "@mui/icons-material";
 // import { Button } from "@mui/material";
 
-import SongList from "@/components/SongList.tsx";
+import SongList from "@/components/SongList";
 import HeaderBar from "@/components/HeaderBar";
 import NewListDialog from "@/components/NewListDialog";
-import useSongs from "@/hooks/useSongs.tsx";
+import useSongs from "@/hooks/useSongs";
 import SHeader from "@/components/SHeader";
 
 function App() {

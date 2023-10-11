@@ -12,13 +12,15 @@
 export type SongData = {
   id: string;
   title: string;
-  description: string;
+  singer: string;
+  site: string;
   list_id: string;
 };
 
 export type ListData = {
   id: string;
   name: string;
+  description: string;
   songs: SongData[];
 };
 

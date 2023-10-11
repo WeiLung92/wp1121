@@ -16,7 +16,11 @@ const ListSchema = new mongoose.Schema<ListDocument>(
   {
     name: {
       type: String,
-      required: true,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
     },
     songs: [
       {

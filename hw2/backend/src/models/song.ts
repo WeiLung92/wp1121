@@ -16,16 +16,20 @@ const SongSchema = new mongoose.Schema<SongDocument>(
   {
     title: {
       type: String,
-      required: true,
+      required: true
     },
-    description: {
+    singer: {
       type: String,
-      required: true,
+      required: true
+    },
+    site: {
+      type: String,
+      required: true
     },
     list_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "List",
-      required: true,
+      required: true
     },
   },
   {

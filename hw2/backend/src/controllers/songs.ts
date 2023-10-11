@@ -20,7 +20,8 @@ export const getSongs = async (_: Request, res: Response<GetSongsResponse>) => {
     const songs = dbSongs.map((song) => ({
       id: song.id as string,
       title: song.title,
-      description: song.description,
+      singer: song.singer,
+      site: song.site,
       list_id: song.list_id.toString(),
     }));
 
@@ -47,7 +48,8 @@ export const getSong = async (
     return res.status(200).json({
       id: song.id as string,
       title: song.title,
-      description: song.description,
+      singer: song.singer,
+      site: song.site,
       list_id: song.list_id.toString(),
     });
   } catch (error) {
@@ -61,7 +63,7 @@ export const createSong = async (
   res: Response<CreateSongResponse | { error: string }>,
 ) => {
   try {
-    const { title, description, list_id } = req.body;
+    const { title, singer, site, list_id } = req.body;
 
     // Check if the list exists
     const list = await ListModel.findById(list_id);
@@ -71,7 +73,8 @@ export const createSong = async (
 
     const song = await SongModel.create({
       title,
-      description,
+      singer,
+      site,
       list_id,
     });
 
@@ -104,7 +107,7 @@ export const updateSong = async (
 
   try {
     const { id } = req.params;
-    const { title, description, list_id } = req.body;
+    const { title, singer, site, list_id } = req.body;
 
     // Check if the song exists
     const oldSong = await SongModel.findById(id);
@@ -125,7 +128,8 @@ export const updateSong = async (
       id,
       {
         title,
-        description,
+        singer,
+        site,
         list_id,
       },
       { new: true },

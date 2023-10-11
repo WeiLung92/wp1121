@@ -7,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 
-import useSongs from "@/hooks/useSongs.tsx";
+import useSongs from "@/hooks/useSongs";
 import { createList } from "@/utils/client";
 
 type NewListDialogProps = {
@@ -18,12 +18,13 @@ type NewListDialogProps = {
 export default function NewListDialog({ open, onClose }: NewListDialogProps) {
   // using a ref to get the dom element is one way to get the value of a input
   // another way is to use a state variable and update it on change, which can be found in SongDialog.tsx
-  const textfieldRef = useRef<HTMLInputElement>(null);
+  const namefieldRef = useRef<HTMLInputElement>(null);
+  const descriptionfieldRef = useRef<HTMLInputElement>(null);
   const { fetchLists } = useSongs();
 
   const handleAddList = async () => {
     try {
-      await createList({ name: textfieldRef.current?.value ?? "" });
+      await createList({ name: namefieldRef.current?.value ?? "" , description: descriptionfieldRef.current?.value ?? ""});
       fetchLists();
     } catch (error) {
       alert("Error: Failed to create list");
@@ -37,8 +38,17 @@ export default function NewListDialog({ open, onClose }: NewListDialogProps) {
       <DialogTitle>Add a list</DialogTitle>
       <DialogContent>
         <TextField
-          inputRef={textfieldRef}
+          inputRef={namefieldRef}
           label="List Name"
+          variant="outlined"
+          sx={{ mt: 2 }}
+          autoFocus
+        />
+      </DialogContent>
+      <DialogContent>
+        <TextField
+          inputRef={descriptionfieldRef}
+          label="discription"
           variant="outlined"
           sx={{ mt: 2 }}
           autoFocus
