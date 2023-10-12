@@ -51,7 +51,10 @@ const AuthLayout = () => {
       /* Here, a toast is a small, non-blocking notification pop-up. */
       /* They can be created via the `toast` function provided by `useToast()` */
       /* Reference: https://ui.shadcn.com/docs/components/toast#usage */
-
+      if(password!==confirmPassword)
+      {
+        toast({description:'Passwords do not match'});
+      }
       /* End of TODO 1.5 */
       register(username, password);
     }
@@ -117,6 +120,7 @@ const AuthLayout = () => {
                 value={username}
                 autoComplete="username"
                 onChange={(e) => setUsername(e.target.value)}
+                placeholder='Enter Username'
               />
 
               {/* End of TODO 1.4 */}
@@ -136,7 +140,8 @@ const AuthLayout = () => {
                 value={password}
                 autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
-              />
+                placeholder='Enter Password'
+              ></Input>
               {/* End of TODO 1.4 */}
             </div>
             <div
@@ -158,6 +163,9 @@ const AuthLayout = () => {
                 type="password"
                 name="confirm-password"
                 autoComplete="new-password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder='Confirm Password'
               />
               {/* End of TODO 1.5 */}
             </div>
