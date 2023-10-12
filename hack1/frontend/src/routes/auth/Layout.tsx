@@ -55,8 +55,12 @@ const AuthLayout = () => {
       {
         toast({description:'Passwords do not match'});
       }
+      else
+      {
+        register(username, password);
+      }
       /* End of TODO 1.5 */
-      register(username, password);
+      
     }
   };
 
@@ -166,6 +170,7 @@ const AuthLayout = () => {
                 name="confirm-password"
                 autoComplete="new-password"
                 value={confirmPassword}
+                required={true}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm Password"
               />
