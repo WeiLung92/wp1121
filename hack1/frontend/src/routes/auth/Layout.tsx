@@ -118,9 +118,10 @@ const AuthLayout = () => {
                 type="text"
                 name="username"
                 value={username}
+                required={true}
                 autoComplete="username"
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder='Enter Username'
+                placeholder="Enter Username"
               />
 
               {/* End of TODO 1.4 */}
@@ -139,8 +140,9 @@ const AuthLayout = () => {
                 name="password"
                 value={password}
                 autoComplete="current-password"
+                required={true}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder='Enter Password'
+                placeholder="Enter Password"
               ></Input>
               {/* End of TODO 1.4 */}
             </div>
@@ -165,7 +167,7 @@ const AuthLayout = () => {
                 autoComplete="new-password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder='Confirm Password'
+                placeholder="Confirm Password"
               />
               {/* End of TODO 1.5 */}
             </div>
