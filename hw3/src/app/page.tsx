@@ -1,17 +1,13 @@
 import { eq, desc, isNull, sql, like, and } from "drizzle-orm";
 
 import NameDialog from "@/components/NameDialog";
-import Tweet from "@/components/Tweet";
 import Activity from "@/components/Activity";
-import TweetInput from "@/components/TweetInput";
 import SearchBar from "@/components/SearchBar";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import { likesTable, tweetsTable, usersTable } from "@/db/schema";
 import ProfileButton from "@/components/ProfileButton";
 import NewButton from "@/components/newButton";
-import { Search } from "lucide-react";
-import { Content } from "next/font/google";
 
 type HomePageProps = {
   searchParams: {

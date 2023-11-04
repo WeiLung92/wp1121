@@ -3,7 +3,6 @@
 import { useState } from "react";
 import type { EventHandler, MouseEvent } from "react";
 
-import { Heart } from "lucide-react";
 
 import useLike from "@/hooks/useLike";
 import { cn } from "@/lib/utils";
@@ -16,13 +15,11 @@ type LikeButtonProps = {
 };
 
 export default function LikeButton({
-  initialLikes,
   initialLiked,
   tweetId,
   handle,
 }: LikeButtonProps) {
   const [liked, setLiked] = useState(initialLiked);
-  const [likesCount, setLikesCount] = useState(initialLikes);
   const { likeTweet, unlikeTweet, loading } = useLike();
 
   const handleClick: EventHandler<MouseEvent> = async (e) => {
@@ -38,14 +35,12 @@ export default function LikeButton({
         tweetId,
         userHandle: handle,
       });
-      setLikesCount((prev) => prev - 1);
       setLiked(false);
     } else {
       await likeTweet({
         tweetId,
         userHandle: handle,
       });
-      setLikesCount((prev) => prev + 1);
       setLiked(true);
     }
   };

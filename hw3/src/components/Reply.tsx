@@ -1,14 +1,3 @@
-import Link from "next/link";
-
-import { MessageCircle, Repeat2, Share } from "lucide-react";
-
-import { Separator } from "@/components/ui/separator";
-
-import LikeButton from "./LikeButton";
-import TimeText from "./TimeText";
-import CheckIcon from '@mui/icons-material/Check';
-import { green } from '@mui/material/colors';
-
 type TweetProps = {
   username?: string;
   handle?: string;
@@ -26,17 +15,8 @@ type TweetProps = {
 // note that the Tweet component is also a server component
 // all client side things are abstracted away in other components
 export default function Reply({
-  username,
-  handle,
-  id,
   authorName,
-  authorHandle,
   content,
-  likes,
-  createdAt,
-  startAt,
-  endAt,
-  liked,
 }: TweetProps) {
   return (
     <>

@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { cn, validateHandle, validateUsername } from "@/lib/utils";
+import { cn, validateHandle} from "@/lib/utils";
 
 export default function NameDialog() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -28,13 +28,11 @@ export default function NameDialog() {
   const searchParams = useSearchParams();
   const usernameInputRef = useRef<HTMLInputElement>(null);
   const handleInputRef = useRef<HTMLInputElement>(null);
-  const [usernameError, setUsernameError] = useState(false);
   const [handleError, setHandleError] = useState(false);
 
   // check if the username and handle are valid when the component mounts
   // only show the dialog if the username or handle is invalid
   useEffect(() => {
-    const username = searchParams.get("username");
     const handle = searchParams.get("handle");
     // if any of the username or handle is not valid, open the dialog
     setDialogOpen(!validateHandle(handle));
@@ -109,7 +107,6 @@ export default function NameDialog() {
             <Input
               placeholder="Web Programming"
               defaultValue={searchParams.get("username") ?? ""}
-              className={cn(usernameError && "border-red-500", "col-span-3")}
               ref={usernameInputRef}
             />
             {/* {usernameError && (

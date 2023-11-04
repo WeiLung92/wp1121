@@ -4,20 +4,13 @@ import { redirect } from "next/navigation";
 import { eq, desc, sql, and } from "drizzle-orm";
 import {
   ArrowLeft,
-  MessageCircle,
-  MoreHorizontal,
-  Repeat2,
-  Share,
 } from "lucide-react";
 
 import LikeButton from "@/components/LikeButton";
 import ReplyInput from "@/components/ReplyInput";
-import TimeText from "@/components/TimeText";
-import Tweet from "@/components/Tweet";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/db";
 import { likesTable, tweetsTable, usersTable } from "@/db/schema";
-import { getAvatar } from "@/lib/utils";
 import TextField from '@mui/material/TextField'
 import Reply from "@/components/Reply";
 

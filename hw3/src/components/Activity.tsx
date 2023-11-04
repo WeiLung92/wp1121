@@ -1,11 +1,5 @@
 import Link from "next/link";
 
-import { MessageCircle, Repeat2, Share } from "lucide-react";
-
-import { Separator } from "@/components/ui/separator";
-
-import LikeButton from "./LikeButton";
-import TimeText from "./TimeText";
 import CheckIcon from '@mui/icons-material/Check';
 import { green } from '@mui/material/colors';
 
@@ -29,13 +23,8 @@ export default function Activity({
   username,
   handle,
   id,
-  authorName,
-  authorHandle,
   content,
   likes,
-  createdAt,
-  startAt,
-  endAt,
   liked,
 }: TweetProps) {
   return (

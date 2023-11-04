@@ -6,19 +6,15 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField'
 import useTweet from "@/hooks/useTweet";
 import useUserInfo from "@/hooks/useUserInfo";
 import GrowingTextarea from "@/components/GrowingTextarea";
-import { Dayjs } from 'dayjs';
+import type{ Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { usePathname, useRouter } from "next/navigation";
-import { db } from "@/db";
 
 const style = {
-    position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -30,14 +26,12 @@ const style = {
   };
   
 
-export default () => {
+export default function NewButton(){
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const router = useRouter();
-    const today = new Date();
 
     const { handle } = useUserInfo();
     const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -114,7 +108,7 @@ export default () => {
                   placeholder="標題"
                 />
               </div>
-              <Button onClick={handleTweet}>
+              <Button onClick={handleTweet} disabled = {loading}>
                 新增
               </Button>
             </div>

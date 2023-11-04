@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 import GrowingTextarea from "@/components/GrowingTextarea";
-import UserAvatar from "@/components/UserAvatar";
 import useTweet from "@/hooks/useTweet";
 import useUserInfo from "@/hooks/useUserInfo";
 import { cn } from "@/lib/utils";
@@ -16,7 +15,6 @@ type ReplyInputProps = {
 
 export default function ReplyInput({
   replyToTweetId,
-  replyToHandle,
 }: ReplyInputProps) {
   const { handle } = useUserInfo();
   const textareaRef = useRef<HTMLTextAreaElement>(null);

@@ -8,8 +8,6 @@ import {
   unique,
   varchar,
 } from "drizzle-orm/pg-core";
-import { string } from "zod";
-
 // schemas define the structure of the tables in the database
 // watch this playlist to learn more about database schemas:
 // although it uses MySQL, the concepts are the same

@@ -2,13 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { MoreHorizontal } from "lucide-react";
-
-import UserAvatar from "@/components/UserAvatar";
-import useUserInfo from "@/hooks/useUserInfo";
-
 export default function ProfileButton() {
-  const { username, handle } = useUserInfo();
   const router = useRouter();
 
   return (
