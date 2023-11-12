@@ -10,14 +10,14 @@ import { authSchema } from "@/validators/auth";
 export default CredentialsProvider({
   name: "credentials",
   credentials: {
-    email: { label: "Email", type: "text" },
-    username: { label: "Userame", type: "text", optional: true },
+    username: { label: "Userame", type: "text" },
+    email: { label: "Email", type: "text", optional: true },
     password: { label: "Password", type: "password" },
   },
   async authorize(credentials) {
     let validatedCredentials: {
-      email: string;
-      username?: string;
+      username: string;
+      email?: string;
       password: string;
     };
 
@@ -38,11 +38,11 @@ export default CredentialsProvider({
         hashedPassword: usersTable.hashedPassword,
       })
       .from(usersTable)
-      .where(eq(usersTable.email, validatedCredentials.email.toLowerCase()))
+      .where(eq(usersTable.username, validatedCredentials.username.toString()))
       .execute();
     if (!existedUser) {
       // Sign up
-      if (!username) {
+      if (!email) {
         console.log("Name is required.");
         return null;
       }
