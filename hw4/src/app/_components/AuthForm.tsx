@@ -27,7 +27,7 @@ function AuthForm() {
       email,
       username,
       password,
-      callbackUrl: `${publicEnv.NEXT_PUBLIC_BASE_URL}/docs`,
+      callbackUrl: `${publicEnv.NEXT_PUBLIC_BASE_URL}/chat`,
     });
   };
   return (
@@ -103,7 +103,7 @@ function AuthForm() {
           onClick={async () => {
             // TODO: sign in with github
             signIn("github", {
-              callbackUrl: `${publicEnv.NEXT_PUBLIC_BASE_URL}/docs`,
+              callbackUrl: `${publicEnv.NEXT_PUBLIC_BASE_URL}/chat`,
             });
           }}
           className="flex w-full"

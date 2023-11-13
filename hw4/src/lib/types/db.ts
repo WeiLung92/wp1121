@@ -10,9 +10,10 @@ export type Message = {
     sender: User['id'];
     receiver: User['id'];
     content: string;
-    timestamp: Date;
+    createdAt: Date;
 };  
 
 export type ChatRoom = {
     id: string;
+    createdAt: Date;
 };

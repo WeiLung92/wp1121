@@ -1,9 +1,10 @@
-import { relations } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import {
   index,
   text,
   pgTable,
   serial,
+  timestamp,
   uuid,
   varchar,
   unique,
@@ -46,10 +47,12 @@ export const messagesTable = pgTable(
     senderId: varchar("senderId"),
     receiverId: varchar("receiverId"),
     content: text("content").notNull(),
+    createdAt: timestamp("created_at").default(sql`now()`),
   },
   (table) => ({
     displayIdIndex: index("display_id_index").on(table.displayId),
     senderIdIndex: index("senderId").on(table.senderId),
+    created_atIndex: index("created_at").on(table.createdAt),
   }),
 );
 
@@ -65,9 +68,11 @@ export const roomsTable = pgTable(
   {
     id: serial("id").primaryKey(),
     displayId: uuid("display_id").defaultRandom().notNull().unique(),
+    createdAt: timestamp("created_at").default(sql`now()`),
   },
   (table) => ({
     displayIdIndex: index("display_id_index").on(table.displayId),
+    created_atIndex: index("created_at").on(table.createdAt),
   }),
 );
 
@@ -94,20 +99,20 @@ export const usersToRoomsTable = pgTable(
     }),
   },
   (table) => ({
-    userAndDocumentIndex: index("user_and_room_index").on(
+    userAndRoomIndex: index("user_and_room_index").on(
     table.userId,
     table.roomId,
     ),
     // This is a unique constraint on the combination of userId and documentId.
     // This ensures that there is no duplicate entry in the table.
-    uniqCombination: unique().on(table.roomId, table.userId),
+    uniqCombination: unique().on(table.userId, table.roomId),
   }),
 );
 
 export const usersToRoomsRelations = relations(
   usersToRoomsTable,
   ({ one }) => ({
-    document: one(roomsTable, {
+    room: one(roomsTable, {
     fields: [usersToRoomsTable.roomId],
     references: [roomsTable.displayId],
     }),
