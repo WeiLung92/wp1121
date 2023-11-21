@@ -1,12 +1,10 @@
 "use client";
 
 import { useRoom } from "@/hooks/useRoom";
-import { useMessage } from "@/hooks/useMessages";
 import Avatar from "../_components/Avatar"
 import ChatRoomInput from "@/components/ChatRoomInput";
 import ChatRoomMessages from "@/components/ChatRoomMessages";
 import { GrAnnounce } from "react-icons/gr";
-import { useEffect, useState } from "react";
 
 function RoomPage() {
   const { otheruser, userId, announcement } = useRoom();

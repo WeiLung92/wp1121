@@ -1,8 +1,6 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState} from "react";
 
 import { useParams, useRouter } from "next/navigation";
-import { useDebounce } from "use-debounce";
-import { pusherClient } from "@/lib/pusher/client";
 import type { ChatRoom } from "@/lib/types/db";
 
 export const useRoom = () => {
@@ -46,7 +44,7 @@ export const useRoom = () => {
     };
     fetchRoom();
     router.refresh();
-  },[])
+  } );
 
   useEffect(() => {
     if (!rId) return;

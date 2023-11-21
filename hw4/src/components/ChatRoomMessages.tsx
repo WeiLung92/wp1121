@@ -8,9 +8,6 @@ import { Button } from "./ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogClose,
   DialogTrigger,
 } from "@/components/ui/dialog"
@@ -18,7 +15,7 @@ import {
 
 function ChatRoomMessages() {
   const { messages, deleteMessage } = useMessage();
-  const { otheruser, userId, announcement, updateAnnouncement } = useRoom();
+  const { otheruser, userId, updateAnnouncement } = useRoom();
   // console.log("ChatRoomMessage");
   // console.log(messages);
   const handleAnnounce = (content: string) => {

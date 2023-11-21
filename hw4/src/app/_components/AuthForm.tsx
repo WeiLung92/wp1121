@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useRoom } from "@/hooks/useRoom";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 

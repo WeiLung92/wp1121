@@ -1,7 +1,6 @@
 import { and, eq, ne, desc } from "drizzle-orm";
 import { db } from "@/db";
 import { usersTable, roomsTable, usersToRoomsTable, messagesTable } from "@/db/schema";
-import { boolean } from "drizzle-orm/mysql-core";
 
 export const createRoom = async (userId: string, otherusername: string) => {
   "use server";

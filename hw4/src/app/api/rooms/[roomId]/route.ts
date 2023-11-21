@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { and, eq, ne, desc } from "drizzle-orm";
+import { and, eq, ne } from "drizzle-orm";
 
 import { db } from "@/db";
 import { roomsTable, usersToRoomsTable } from "@/db/schema";

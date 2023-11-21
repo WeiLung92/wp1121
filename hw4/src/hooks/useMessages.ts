@@ -1,9 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useParams, useRouter } from "next/navigation";
-import { useDebounce } from "use-debounce";
 
-import type { Message, User } from "@/lib/types/db";
+import type { Message } from "@/lib/types/db";
 import { pusherClient } from "@/lib/pusher/client";
 import { useSession } from "next-auth/react";
 
@@ -110,7 +109,7 @@ export const useMessage = () => {
       pusherClient.unsubscribe(channelName);
     };
     
-  }, []);
+  } );
 
   return {
     messages,

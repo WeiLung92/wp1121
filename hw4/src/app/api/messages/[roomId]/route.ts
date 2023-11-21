@@ -2,15 +2,13 @@ import { type NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/db";
 import type { Message } from "@/lib/types/db";
-import { auth } from "@/lib/auth";
-import { messagesTable, roomsTable } from "@/db/schema";
+import { messagesTable } from "@/db/schema";
 import { eq, asc } from "drizzle-orm";
 
 import Pusher from "pusher";
 import { privateEnv } from "@/lib/env/private";
 import { publicEnv } from "@/lib/env/public";
 
-import { revalidatePath } from "next/cache";
 
 const postMessageSchema = z.object({
   senderId: z.string(),

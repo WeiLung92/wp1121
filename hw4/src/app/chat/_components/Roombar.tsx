@@ -20,7 +20,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
-import { DialogClose } from "@radix-ui/react-dialog";
 
 async function Roombar() {
     const session = await auth();
