@@ -8,6 +8,7 @@ import {
   uuid,
   varchar,
   unique,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 // Checkout the many-to-many relationship in the following tutorial:
@@ -44,14 +45,16 @@ export const messagesTable = pgTable(
   {
     id: serial("id").primaryKey(),
     displayId: uuid("display_id").defaultRandom().notNull().unique(),
-    senderId: varchar("senderId"),
-    receiverId: varchar("receiverId"),
+    senderId: varchar("senderId").notNull(),
     content: text("content").notNull(),
-    createdAt: timestamp("created_at").default(sql`now()`),
+    roomId: varchar("roomId").notNull(),
+    createdAt: timestamp("created_at").default(sql`now()`).notNull(),
+    deleteSelf: boolean("deleteSelf").default(false).notNull(),
   },
   (table) => ({
     displayIdIndex: index("display_id_index").on(table.displayId),
     senderIdIndex: index("senderId").on(table.senderId),
+    roomIdIndexx: index("roomId").on(table.roomId),
     created_atIndex: index("created_at").on(table.createdAt),
   }),
 );
@@ -68,6 +71,8 @@ export const roomsTable = pgTable(
   {
     id: serial("id").primaryKey(),
     displayId: uuid("display_id").defaultRandom().notNull().unique(),
+    latestMessage: text("latestMessage"),
+    announcement: text("announcement"),
     createdAt: timestamp("created_at").default(sql`now()`),
   },
   (table) => ({

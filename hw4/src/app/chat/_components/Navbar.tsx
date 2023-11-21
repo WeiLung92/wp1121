@@ -1,19 +1,20 @@
 import { PiChatsLight } from "react-icons/pi";
 import { BiLogOut } from "react-icons/bi";
 import Link from "next/link";
-import { RxAvatar } from "react-icons/rx";
 
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { auth } from "@/lib/auth";
 import { publicEnv } from "@/lib/env/public";
+import Avatar from "@/app/chat/_components/Avatar"
 
 async function Navbar() {
   const session = await auth();
   if (!session || !session?.user?.id) {
     redirect(publicEnv.NEXT_PUBLIC_BASE_URL);
   }
+  const myname = session.user.username;
   return (
     // <nav className="flex w-full flex-col overflow-y-scroll bg-slate-100 pb-10">
     //   <nav className="relative sticky top-0 flex flex-col justify-between border-b bg-slate-100 pb-2">
@@ -53,7 +54,19 @@ async function Navbar() {
           <span className="grow text-3xl text-blue-500">Chat</span>
         </Button>
 
-
+        <div className="absolute bottom-10 flex">
+        <nav className="flex w-full p-3 text-md font-semibold">
+          <Avatar 
+            username={myname}
+            classname="bg-black text-white w-12 h-12 my-3"
+          />
+          <div className="flex-col ml-5 mt-5">
+            <div className="text-xl font-bold text-black">
+              {myname}
+            </div>
+          </div>
+        </nav>
+        </div>
         <Link href={`/auth/signout`}>
           <Button
             className="absolute bottom-0 flex"

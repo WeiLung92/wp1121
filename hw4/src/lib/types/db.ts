@@ -6,14 +6,17 @@ export type User = {
   };
 
 export type Message = {
-    id: string;
-    sender: User['id'];
-    receiver: User['id'];
+    displayId: string;
+    senderId: User['id'];
     content: string;
+    roomId: string;
     createdAt: Date;
+    deleteSelf: boolean;
 };  
 
 export type ChatRoom = {
     id: string;
+    latestMessage: string;
+    announcement: string;
     createdAt: Date;
 };

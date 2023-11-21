@@ -17,7 +17,7 @@ type Props = {
         <div className="w-2/5 overflow-y-scroll">
           <Roombar />
         </div>
-        <div className="w-2/5 overflow-y-scroll">
+        <div className="w-2/5 ">
           {children}
         </div>
       </main>
