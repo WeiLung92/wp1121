@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/db";
 import { projectsTable, tasksTable, usersTable } from "@/db/schema";
-
+export const revalidate = 0
 export const GET = async () => {
   try {
     const deletedProjects = await db.delete(projectsTable).returning();
